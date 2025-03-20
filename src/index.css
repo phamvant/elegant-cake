@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  --font-display: "Playfair Display", serif;
+  --color-cream: #f9f1ed;
+  --color-blush: #f7d7c4;
+  --color-gold: #d4a373;
+  --color-brown: #4a3c31;
+  --color-lavender: #e6e6fa;
+  --color-teal: #2dd4bf; /* Modern teal for accents */
+  --color-coral: #ff6f61; /* Vibrant coral for hover effects */
+  --color-gradient-start: #f7d7c4; /* Gradient start (blush) */
+  --color-gradient-end: #e6e6fa; /* Gradient end (lavender) */
+}
+
+/* Custom animation */
+.animate-fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-300px * 9)); /* Adjust based on your card width and number of cakes */
+  }
+}
+
+/* Optional: Add a gradient mask to fade edges
+.overflow-hidden::before,
+.overflow-hidden::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  z-index: 2;
+}
+
+.overflow-hidden::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-cream) 0%, transparent 100%);
+}
+
+.overflow-hidden::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-cream) 0%, transparent 100%);
+} */
+
+.scroller {
+  max-width: 100%;
+}
+
+.scroller__inner {
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-direction="right"] {
+  --_animation-direction: reverse;
+}
+
+.scroller[data-direction="left"] {
+  --_animation-direction: forwards;
+}
+
+.scroller[data-speed="fast"] {
+  --_animation-duration: 20s;
+}
+
+.scroller[data-speed="slow"] {
+  --_animation-duration: 60s;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+/* Add this if you're not using @tailwindcss/line-clamp plugin */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
