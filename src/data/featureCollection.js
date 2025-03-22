@@ -3,7 +3,7 @@ export const featureCollection = [
     id: 1,
     name: "Vanilla Dream",
     image: "/elegant-cake/images/cake1.webp",
-    description: "A light, fluffy vanilla cake with creamy frosting.",
+    description: "A light, fluffy vanilla cake with creamy.",
     sizes: {
       small: { label: '6" (6-8 servings)', price: 45 },
       medium: { label: '8" (10-12 servings)', price: 55 },
@@ -14,7 +14,7 @@ export const featureCollection = [
     id: 2,
     name: "Chocolate Bliss",
     image: "/elegant-cake/images/cake2.jpg",
-    description: "Rich chocolate layers with a silky ganache finish.",
+    description: "Rich chocolate layers with a silky ganache.",
     sizes: {
       small: { label: '6" (6-8 servings)', price: 50 },
       medium: { label: '8" (10-12 servings)', price: 60 },

@@ -4,10 +4,8 @@ function CakeCard({ cake, isFeatured = false }) {
   return (
     <Link to={`/elegant-cake/cake/${cake.id}`}>
       <div
-        className={`group bg-white rounded-xl shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl ${
-          isFeatured
-            ? "md:flex items-stretch border border-lavender"
-            : "border-t-4 border-lavender"
+        className={`group bg-white rounded-4xl shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl ${
+          isFeatured ? "md:flex items-stretch " : ""
         }`}
       >
         {/* Image container */}

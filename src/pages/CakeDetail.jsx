@@ -137,7 +137,7 @@ function CakeDetail() {
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`p-4 rounded-xl border-2 transition-all ${
+                    className={`p-4 rounded-4xl border-2 transition-all ${
                       selectedSize === size
                         ? "border-gold bg-gold/5"
                         : "border-gray-200 hover:border-gold/50"
@@ -179,7 +179,7 @@ function CakeDetail() {
 
               <button
                 onClick={handleAddToCart}
-                className="w-full py-4 bg-gold text-white rounded-xl hover:bg-brown 
+                className="w-full py-4 bg-gold text-white rounded-4xl hover:bg-brown 
                                transition-colors flex items-center justify-center gap-2 group cursor-pointer"
               >
                 Add to Cart

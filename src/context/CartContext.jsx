@@ -40,9 +40,13 @@ export const CartProvider = ({ children }) => {
   };
 
   const updateQuantity = (id, quantity) => {
+    if (quantity === 0) {
+      removeFromCart(id);
+      return;
+    }
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
+        item.id === id ? { ...item, quantity: Math.max(0, quantity) } : item
       )
     );
   };
