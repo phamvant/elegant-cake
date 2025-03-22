@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 function CakeCardCart({ cake, isFeatured = false, updateQuantity }) {
+  const totalPrice = (
+    cake.sizes[cake.selectedSize].price * cake.quantity
+  ).toFixed(2);
+
   return (
     <div>
       <div
@@ -39,18 +43,13 @@ function CakeCardCart({ cake, isFeatured = false, updateQuantity }) {
               }`}
             >
               {cake.name}
+              <span className="text-sm text-gray-500">
+                {" "}
+                - {cake.selectedSize} - ${cake.sizes[cake.selectedSize].price}
+              </span>
             </h4>
-            <div className="w-16 h-0.5 bg-lavender mt-3 group-hover:w-full transition-all duration-300 mx-auto md:ml-0" />
+            <div className="hidden md:block w-16 h-0.5 bg-lavender mt-3 group-hover:w-full transition-all duration-300 mx-auto md:ml-0" />
           </div>
-
-          {/* Description */}
-          <p
-            className={`text-gray-600 mb-6 ${
-              isFeatured ? "text-lg" : "line-clamp-2"
-            }`}
-          >
-            {cake.selectedSize}
-          </p>
 
           {/* Price and CTA */}
           <div
@@ -59,7 +58,7 @@ function CakeCardCart({ cake, isFeatured = false, updateQuantity }) {
             } gap-6`}
           >
             <span className="text-xl font-semibold text-gold">
-              ${cake.sizes["small"].price}
+              {/* ${cake.sizes[cake.selectedSize].price} */}${totalPrice}
             </span>
             <Link to={`/elegant-cake/cake/${cake.id}`}>
               <span className="inline-flex items-center text-gray-400 group-hover:text-gold transition-colors duration-300">
