@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
-import { useNavigate } from "react-router-dom";
 import Notification from "../components/Notification";
 
 function Checkout() {
   const { cart, clearCart } = useCart();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -36,6 +34,7 @@ function Checkout() {
       // Here you can handle the form submission, e.g., send data to a server
       setShowNotification(true);
       clearCart(); // Clear the cart after successful order
+      setErrors({});
       // Redirect to home or a confirmation page
     } else {
       setErrors(formErrors);
