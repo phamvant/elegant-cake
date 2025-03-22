@@ -72,7 +72,7 @@ function Header() {
           >
             Cart
             {totalItems > 0 && (
-              <span className="absolute top-0 -right-5 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-5 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {totalItems}
               </span>
             )}
