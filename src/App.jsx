@@ -17,7 +17,11 @@ function App() {
     <div className="min-h-screen font-display">
       <Header />
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
+        <Routes
+          location={location}
+          key={location.pathname}
+          path="/elegant-cake"
+        >
           <Route
             path="/elegant-cake/"
             element={
