@@ -32,14 +32,6 @@ function Header() {
           >
             Home
           </Link>
-          {/* Contact link with teal underline on hover */}
-          {/* <Link
-            to="/elegant-cake/contact"
-            className="text-gold hover:text-coral hover:border-b-2 hover:border-teal transition-all duration-300"
-          >
-            Contact
-          </Link> */}
-          {/* Cart link with teal underline on hover */}
           <Link
             to="/elegant-cake/cart"
             className="relative text-gold hover:text-coral hover:border-b-2 hover:border-teal transition-all duration-300"

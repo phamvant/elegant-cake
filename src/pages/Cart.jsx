@@ -4,10 +4,8 @@ import { useCart } from "../context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 
 function Cart() {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, updateQuantity } = useCart();
   const navigate = useNavigate();
-
-  const handleRemove = (id) => removeFromCart(id);
 
   const calculateTotal = () => {
     return cart
@@ -44,6 +42,7 @@ function Cart() {
             <div className="lg:col-span-2 space-y-6">
               {cart.map((item) => (
                 <CakeCardCart
+                  key={item.id + item.selectedSize}
                   cake={item}
                   isFeatured={true}
                   updateQuantity={updateQuantity}

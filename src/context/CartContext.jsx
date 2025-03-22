@@ -35,13 +35,18 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const removeFromCart = (id) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  const removeFromCart = (id, selectedSize) => {
+    console.log(selectedSize);
+    setCart((prevCart) =>
+      prevCart.filter(
+        (item) => !(item.id === id && item.selectedSize === selectedSize)
+      )
+    );
   };
 
-  const updateQuantity = (id, quantity) => {
+  const updateQuantity = (id, selectedSize, quantity) => {
     if (quantity === 0) {
-      removeFromCart(id);
+      removeFromCart(id, selectedSize);
       return;
     }
     setCart((prevCart) =>
