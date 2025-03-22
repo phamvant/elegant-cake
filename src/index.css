@@ -114,3 +114,30 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s forwards;
+}
+
+/* Add this CSS to your styles */
+.image-container {
+  position: relative;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.image-container.fade-out {
+  opacity: 0;
+}
+
+.image-container.fade-in {
+  opacity: 1;
+}

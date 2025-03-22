@@ -1,20 +1,12 @@
 import { useState } from "react";
-import CakeCard from "./CakeCard";
-import PageTransition from "./PageTransition";
-import cakes from "../data/cakes";
+import CakeCard from "../components/CakeCard";
+import PageTransition from "../components/PageTransition";
+import { categories } from "../data/categories";
+import { cakes } from "../data/cakes";
 
 function AllCakes() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Categories for filter - adjust based on your cake categories
-  const categories = [
-    { id: "all", name: "All Cakes" },
-    { id: "birthday", name: "Birthday" },
-    { id: "wedding", name: "Wedding" },
-    { id: "custom", name: "Custom" },
-    { id: "seasonal", name: "Seasonal" },
-  ];
 
   // Filter and search functionality
   const filteredCakes = cakes.filter(
@@ -26,7 +18,7 @@ function AllCakes() {
 
   return (
     <PageTransition type="fade">
-      <section className=" bg-cream">
+      <section className=" bg-cream pb-6">
         {/* Hero Banner */}
         <div className="relative h-[300px] mb-12 overflow-hidden">
           <div
@@ -38,27 +30,26 @@ function AllCakes() {
           >
             <div className="absolute inset-0 bg-black/40" />
           </div>
-          <div className="relative h-full flex items-center justify-center">
+          <div className="relative h-full flex items-center justify-center bg-gold">
             <h1 className="text-5xl font-playfair text-white text-center">
               Our Collection
-              <div className="w-24 h-1 bg-gold mx-auto mt-4" />
             </h1>
           </div>
         </div>
 
         {/* Search and Filter Section */}
         <div className="max-w-7xl mx-auto px-4 mb-12">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 bg-white p-6 rounded-xl shadow-md">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 rounded-xl">
             {/* Search Input */}
             <div className="w-full md:w-auto">
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Search cakes..."
+                  placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full md:w-[300px] pl-10 pr-4 py-2 border border-lavender rounded-full 
-                           focus:outline-none focus:ring-2 focus:ring-gold/50"
+                  className="bg-white w-full md:w-[300px] pl-10 pr-4 py-2 border-0 rounded-full transition-normal duration-300 
+                           ring-2 ring-white focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-0"
                 />
                 <svg
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -82,10 +73,10 @@ function AllCakes() {
                 <button
                   key={category.id}
                   onClick={() => setActiveFilter(category.id)}
-                  className={`px-6 py-2 rounded-full transition-all duration-300 ${
+                  className={`px-6 py-2 rounded-full transition-all duration-300 cursor-pointer ${
                     activeFilter === category.id
                       ? "bg-gold text-white shadow-md"
-                      : "bg-lavender/20 text-brown hover:bg-lavender/30"
+                      : " text-brown hover:bg-white/70"
                   }`}
                 >
                   {category.name}

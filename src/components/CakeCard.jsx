@@ -61,7 +61,7 @@ function CakeCard({ cake, isFeatured = false }) {
             } gap-6`}
           >
             <span className="text-xl font-semibold text-gold">
-              {cake.price}
+              ${cake.sizes["small"].price}
             </span>
             <span className="inline-flex items-center text-gray-400 group-hover:text-gold transition-colors duration-300">
               View Details

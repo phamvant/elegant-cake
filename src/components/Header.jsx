@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 function Header() {
+  const { cart } = useCart();
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     // Sticky header with a gradient background and glassmorphism effect
     <header className="fixed w-full top-0 z-50 backdrop-blur-md shadow-sm">
@@ -19,7 +24,7 @@ function Header() {
         </div>
 
         {/* Navigation Links */}
-        <nav className="flex space-x-8">
+        <nav className="flex space-x-8 items-center">
           {/* Home link with teal underline on hover */}
           <Link
             to="/elegant-cake/"
@@ -28,11 +33,23 @@ function Header() {
             Home
           </Link>
           {/* Contact link with teal underline on hover */}
-          <Link
+          {/* <Link
             to="/elegant-cake/contact"
             className="text-gold hover:text-coral hover:border-b-2 hover:border-teal transition-all duration-300"
           >
             Contact
+          </Link> */}
+          {/* Cart link with teal underline on hover */}
+          <Link
+            to="/elegant-cake/cart"
+            className="relative text-gold hover:text-coral hover:border-b-2 hover:border-teal transition-all duration-300"
+          >
+            Cart
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
           </Link>
         </nav>
       </div>

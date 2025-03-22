@@ -1,31 +1,8 @@
-import CakeCard from "./CakeCard";
-import CakeSlide from "./CakeSlide";
+import CakeCard from "../components/CakeCard";
+import CakeSlide from "../components/CakeSlide";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
-
-const cakes = [
-  {
-    id: 1,
-    name: "Vanilla Dream",
-    price: "$45",
-    image: "/elegant-cake/images/cake1.webp",
-    description: "A light, fluffy vanilla cake with creamy.",
-  },
-  {
-    id: 2,
-    name: "Chocolate Bliss",
-    price: "$50",
-    image: "/elegant-cake/images/cake2.jpg",
-    description: "Rich chocolate layers with a silky ganache.",
-  },
-  {
-    id: 3,
-    name: "Rose Petal Delight",
-    price: "$55",
-    image: "/elegant-cake/images/cake3.webp",
-    description: "Delicate rose-infused cake with edible petals.",
-  },
-];
+import { featureCollection } from "../data/featureCollection";
 
 function CakeList() {
   const featuredRef = useRef(null);
@@ -130,15 +107,25 @@ function CakeList() {
         ref={featuredRef}
         className="max-w-6xl pt-32 mx-auto px-4 mb-24 opacity-0 translate-y-10 transition-all duration-1000"
       >
+        <p className="text-xl font-bold text-center text-teal mb-4">
+          FROM CHEF
+        </p>
+        <p className="text-xl text-center text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Discover our exquisite collection of artisanal cakes, where
+          time-honored traditions meet contemporary elegance. Each creation is
+          meticulously crafted with premium ingredients and adorned with
+          delicate details, ensuring every celebration becomes an unforgettable
+          moment of pure delight.
+        </p>
         <h3 className="text-3xl text-center text-brown mb-8 font-playfair">
           Featured Delight
         </h3>
         <div className="max-w-5xl mx-auto">
-          <CakeCard cake={cakes[0]} isFeatured={true} />
+          <CakeCard cake={featureCollection[0]} isFeatured={true} />
         </div>
       </div>
 
-      <CakeSlide cakes={cakes} />
+      <CakeSlide cakes={featureCollection} />
       {/* Main Collection Grid */}
       <div className="max-w-7xl mx-auto px-4 py-10">
         <div className="mb-12 text-center">
@@ -150,7 +137,7 @@ function CakeList() {
 
         {/* Responsive Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-          {cakes.map((cake) => (
+          {featureCollection.map((cake) => (
             <div
               key={cake.id}
               className="transform hover:-translate-y-1 transition-transform duration-300"

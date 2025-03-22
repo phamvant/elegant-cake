@@ -1,12 +1,14 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Header from "./components/Header";
-import CakeList from "./components/CakeList";
-import Contact from "./components/Contact";
+import CakeList from "./pages/CakeList";
+import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
-import CakeDetail from "./components/CakeDetail";
+import CakeDetail from "./pages/CakeDetail";
 import PageTransition from "./components/PageTransition";
-import AllCakes from "./components/AllCakes";
+import AllCakes from "./pages/AllCakes";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const location = useLocation();
@@ -41,6 +43,22 @@ function App() {
                 <div className="pt-22">
                   <AllCakes />
                 </div>
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/elegant-cake/cart"
+            element={
+              <PageTransition>
+                <Cart />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/elegant-cake/checkout"
+            element={
+              <PageTransition>
+                <Checkout />
               </PageTransition>
             }
           />
