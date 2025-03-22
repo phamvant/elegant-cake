@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import Notification from "../components/Notification";
 
 function Checkout() {
   const { cart, clearCart } = useCart();
@@ -12,6 +13,7 @@ function Checkout() {
     phone: "",
   });
   const [errors, setErrors] = useState({});
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,9 +34,9 @@ function Checkout() {
     const formErrors = validateForm();
     if (Object.keys(formErrors).length === 0) {
       // Here you can handle the form submission, e.g., send data to a server
-      alert("Order placed successfully!");
+      setShowNotification(true);
       clearCart(); // Clear the cart after successful order
-      navigate("/"); // Redirect to home or a confirmation page
+      // Redirect to home or a confirmation page
     } else {
       setErrors(formErrors);
     }
@@ -53,7 +55,7 @@ function Checkout() {
     <div className="min-h-screen bg-gold/10 py-12 px-4 pt-32">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-gray-700">Checkout</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
           {/* Order Summary */}
           <div className="p-6 rounded-4xl border-[1px] border-gold/80">
             <h3 className="text-xl font-bold mb-4 text-gray-700">
@@ -61,7 +63,10 @@ function Checkout() {
             </h3>
             <ul className="space-y-4">
               {cart.map((item) => (
-                <li key={item.id} className="flex justify-between">
+                <li
+                  key={item.id + item.selectedSize}
+                  className="flex justify-between"
+                >
                   <span>
                     {item.name} x {item.quantity}
                   </span>
@@ -90,7 +95,7 @@ function Checkout() {
                 onChange={handleChange}
                 className={`mt-1 rounded-full block w-full border-0 ring-1 transition-all pl-4 ${
                   errors.name ? "border-red-500" : "border-gold/50"
-                } focus:ring-1 ring-gold/20 focus:ring-gold focus:outline-none p-2`}
+                } focus:ring-1 ring-gold/50 focus:ring-gold focus:outline-none p-2`}
               />
               {errors.name && (
                 <p className="text-red-500 text-sm">{errors.name}</p>
@@ -107,7 +112,7 @@ function Checkout() {
                 onChange={handleChange}
                 className={`mt-1 rounded-full block w-full border-0 ring-1 transition-all pl-4 ${
                   errors.email ? "border-red-500" : "border-gold/50"
-                } focus:ring-1 ring-gold/20 focus:ring-gold focus:outline-none p-2`}
+                } focus:ring-1 ring-gold/50 focus:ring-gold focus:outline-none p-2`}
               />
               {errors.email && (
                 <p className="text-red-500 text-sm">{errors.email}</p>
@@ -124,7 +129,7 @@ function Checkout() {
                 onChange={handleChange}
                 className={`mt-1 rounded-full block w-full border-0 ring-1 transition-all pl-4 ${
                   errors.address ? "border-red-500" : "border-gold/50"
-                } focus:ring-1 ring-gold/20 focus:ring-gold focus:outline-none p-2`}
+                } focus:ring-1 ring-gold/50 focus:ring-gold focus:outline-none p-2`}
               />
               {errors.address && (
                 <p className="text-red-500 text-sm">{errors.address}</p>
@@ -141,7 +146,7 @@ function Checkout() {
                 onChange={handleChange}
                 className={`mt-1 rounded-full block w-full border-0 ring-1 transition-all pl-4 ${
                   errors.phone ? "border-red-500" : "border-gold/50"
-                } focus:ring-1 ring-gold/20 focus:ring-gold focus:outline-none p-2`}
+                } focus:ring-1 ring-gold/50 focus:ring-gold focus:outline-none p-2`}
               />
               {errors.phone && (
                 <p className="text-red-500 text-sm">{errors.phone}</p>
@@ -156,6 +161,14 @@ function Checkout() {
           </form>
         </div>
       </div>
+
+      {/* Notification */}
+      {showNotification && (
+        <Notification
+          message="Order confirmed. We we will contact with you soon!"
+          onClose={() => setShowNotification(false)}
+        />
+      )}
     </div>
   );
 }
