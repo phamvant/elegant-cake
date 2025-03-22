@@ -18,10 +18,15 @@ function Cart() {
   };
 
   return (
-    <div className="min-h-screen bg-gold/10 py-12 px-4 pt-32">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-white-700 py-12 px-4 pt-32 relative">
+      <div className="absolute inset-0 overflow-hidden -z-10">
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-amber-600/30 animate-bubble"></div>
+        <div className="absolute top-1/2 -right-48 w-96 h-96 rounded-full bg-amber-800/20 animate-bubble"></div>
+        <div className="absolute top-32 right-44 size-32 rounded-full bg-amber-800/50 animate-bubble"></div>
+      </div>
+      <div className="max-w-6xl mx-auto z-20">
         <h2 className="text-4xl font-serif text-gray-600 mb-10 tracking-wide">
-          Cart
+          Shopping Cart
         </h2>
 
         {cart.length === 0 ? (

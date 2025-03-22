@@ -4,7 +4,7 @@ function CakeCard({ cake, isFeatured = false }) {
   return (
     <Link to={`/elegant-cake/cake/${cake.id}`}>
       <div
-        className={`group bg-white rounded-4xl shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl ${
+        className={`group z-50 bg-white rounded-4xl shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl ${
           isFeatured ? "md:flex items-stretch " : ""
         }`}
       >

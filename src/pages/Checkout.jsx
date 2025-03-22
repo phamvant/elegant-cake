@@ -51,8 +51,13 @@ function Checkout() {
   };
 
   return (
-    <div className="min-h-screen bg-gold/10 py-12 px-4 pt-32">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen  py-12 px-4 pt-32">
+      <div className="absolute inset-0 overflow-hidden -z-10">
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-amber-600/30 animate-bubble"></div>
+        <div className="absolute top-1/2 -right-48 w-96 h-96 rounded-full bg-amber-800/20 animate-bubble"></div>
+        <div className="absolute top-32 right-44 size-32 rounded-full bg-amber-800/50 animate-bubble"></div>
+      </div>
+      <div className="max-w-6xl mx-auto z-10">
         {/* <h2 className="text-3xl font-bold mb-6 text-gray-700">Checkout</h2> */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
           {/* Order Summary */}
@@ -111,7 +116,7 @@ function Checkout() {
             </div>
 
             <div className="text-center mt-6 text-xs text-gray-400">
-              <p>Thank you for your order!</p>
+              <p>Thank you! Please feel contanct form below!</p>
               <p>* * * * *</p>
             </div>
           </div>
